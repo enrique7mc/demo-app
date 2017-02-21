@@ -5,4 +5,9 @@
   <div *ngFor="let product of products;">
     {{ product.name }}
   </div>
+  <app-product-detail
+    *ngFor="let product of products;"
+    [detail]="product"
+    (remove)="handleRemove($event)">
+  </app-product-detail>
 </div>
