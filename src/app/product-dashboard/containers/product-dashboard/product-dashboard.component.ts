@@ -39,4 +39,9 @@ export class ProductDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleRemove(event: Product) {
+    console.log(`deleting: ${event.name}`);
+    // TODO actually delete item
+  }
+
 }

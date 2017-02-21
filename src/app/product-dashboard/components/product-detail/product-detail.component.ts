@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../../models/product';
 
@@ -7,15 +7,21 @@ import { Product } from '../../models/product';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnChanges {
   @Input()
   detail: Product;
+
+  @Output()
+  remove: EventEmitter<Product> = new EventEmitter<Product>();
 
   editing: boolean = false;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes) {
+    if(changes.detail) {
+      this.detail = Object.assign({}, changes.detail.currentValue);
+    }
   }
 
   toggleEdit() {
@@ -28,6 +34,10 @@ export class ProductDetailComponent implements OnInit {
   onNameChange(value: string) {
     console.log(value);
     this.detail.name = value;
+  }
+
+  onRemove() {
+    this.remove.emit(this.detail);
   }
 
 }
