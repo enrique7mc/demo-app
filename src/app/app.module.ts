@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ProductDashboardModule } from './product-dashboard/product-dashboard.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -25,6 +27,7 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
+    ProductDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
