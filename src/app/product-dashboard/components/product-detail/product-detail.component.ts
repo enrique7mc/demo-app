@@ -14,6 +14,9 @@ export class ProductDetailComponent implements OnChanges {
   @Output()
   remove: EventEmitter<Product> = new EventEmitter<Product>();
 
+  @Output()
+  edit: EventEmitter<Product> = new EventEmitter<Product>();
+
   editing: boolean = false;
 
   constructor() { }
@@ -25,19 +28,17 @@ export class ProductDetailComponent implements OnChanges {
   }
 
   toggleEdit() {
-    // if (this.editing) {
-    //   this.edit.emit(this.detail);
-    // }
+    if (this.editing) {
+      this.edit.emit(this.detail);
+    }
     this.editing = !this.editing;
   }
 
   onNameChange(value: string) {
-    console.log(value);
     this.detail.name = value;
   }
 
   onRemove() {
     this.remove.emit(this.detail);
   }
-
 }

@@ -8,6 +8,7 @@
   <app-product-detail
     *ngFor="let product of products;"
     [detail]="product"
+    (edit)="handleEdit($event)"
     (remove)="handleRemove($event)">
   </app-product-detail>
 </div>

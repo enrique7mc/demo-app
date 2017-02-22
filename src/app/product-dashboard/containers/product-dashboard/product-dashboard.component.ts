@@ -7,41 +7,50 @@ import { Product } from '../../models/product';
   styleUrls: ['./product-dashboard.component.css']
 })
 export class ProductDashboardComponent implements OnInit {
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'PC',
-      stock: 10,
-      available: true
-    },
-    {
-      id: 2,
-      name: 'Chromecast',
-      stock: 3,
-      available: true
-    },
-    {
-      id: 3,
-      name: 'Fridge',
-      stock: 0,
-      available: false
-    },
-    {
-      id: 4,
-      name: 'Keyboard',
-      stock: 1,
-      available: true
-    }
-  ]
+  products: Product[];
 
   constructor() { }
 
   ngOnInit() {
+    this.products = [
+      {
+        id: 1,
+        name: 'PC',
+        stock: 10,
+        available: true
+      },
+      {
+        id: 2,
+        name: 'Chromecast',
+        stock: 3,
+        available: true
+      },
+      {
+        id: 3,
+        name: 'Fridge',
+        stock: 0,
+        available: false
+      },
+      {
+        id: 4,
+        name: 'Keyboard',
+        stock: 1,
+        available: true
+      }
+    ];
   }
 
-  handleRemove(event: Product) {
-    console.log(`deleting: ${event.name}`);
-    // TODO actually delete item
+  handleEdit(event: Product) {    
+    this.products = this.products.map((product: Product) => {
+      if (product.id === event.id) {
+        product = Object.assign({}, product, event);
+      }
+      
+      return product;
+    })
   }
 
+  handleRemove(event: Product) {    
+    this.products = this.products.filter((product: Product) => product.id !== event.id);
+  }
 }
