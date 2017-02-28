@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product'; 
+import { Product } from '../../models/product.interface'; 
+
+import { ProductDashboardService } from '../../product-dashboard.service';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -9,35 +11,10 @@ import { Product } from '../../models/product';
 export class ProductDashboardComponent implements OnInit {
   products: Product[];
 
-  constructor() { }
+  constructor(private productDashboardService: ProductDashboardService) { }
 
   ngOnInit() {
-    this.products = [
-      {
-        id: 1,
-        name: 'PC',
-        stock: 10,
-        available: true
-      },
-      {
-        id: 2,
-        name: 'Chromecast',
-        stock: 3,
-        available: true
-      },
-      {
-        id: 3,
-        name: 'Fridge',
-        stock: 0,
-        available: false
-      },
-      {
-        id: 4,
-        name: 'Keyboard',
-        stock: 1,
-        available: true
-      }
-    ];
+    this.products = this.productDashboardService.getProducts();
   }
 
   handleEdit(event: Product) {    

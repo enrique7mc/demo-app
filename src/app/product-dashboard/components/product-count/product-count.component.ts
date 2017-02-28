@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Product } from '../../models/product';
+import { Product } from '../../models/product.interface';
 
 @Component({
   selector: 'app-product-count',

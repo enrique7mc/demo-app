@@ -1,0 +1,28 @@
+{
+  "products": [
+        {
+          "id": 1,
+          "name": "PC",
+          "stock": 9,
+          "available": true
+        },
+        {
+          "id": 2,
+          "name": "Chromecast",
+          "stock": 3,
+          "available": true
+        },
+        {
+          "id": 3,
+          "name": "Lamp",
+          "stock": 0,
+          "available": false
+        },
+        {
+          "id": 4,
+          "name": "Keyboard",
+          "stock": 1,
+          "available": true
+        }
+      ]
+}
